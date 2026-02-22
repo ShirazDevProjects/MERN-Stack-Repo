@@ -2,6 +2,8 @@ version: '3.8'
 services:
   backend:
     build: ./server
+    ports:
+      - "4000:4000"
     # Ports removed because Nginx will handle reverse proxying on port 4000
     env_file:
       - ./server/.env
@@ -12,7 +14,6 @@ services:
     build: ./client
     ports:
       - "80:3000"
-      - "4000:4000"
     depends_on:
       - backend
     networks:
