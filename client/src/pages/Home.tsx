@@ -7,7 +7,7 @@ const Home = () => {
         // Fetch message from the backend API when the button is clicked
         fetch('/api/message')
             .then((res) => res.json())
-            .then((data) => setMessage(data.message))
+            .then((data) => setMessage(data.message + " and " + data.mongodb))
             .catch((err) => console.error('Error fetching data:', err));
     };
 

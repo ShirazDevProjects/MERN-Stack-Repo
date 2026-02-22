@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI)
+const mongodb = mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('Connected to MongoDB'))
     .catch((err) => console.error('MongoDB connection error:', err));
 
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/message', (req, res) => {
-    res.json({ message: 'Hello from the backend!' });
+    res.json({ message: 'Hello from the backend!', mongodb });
 });
 
 app.listen(port, () => {
