@@ -13,7 +13,7 @@ const Home = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen">
-            <h1 className="text-4xl font-bold">Welcome to MERN Stack App</h1>
+            <h1 className="text-4xl font-bold">Welcome to MERN App</h1>
             <p className="mt-4 text-lg text-gray-600">This is the Home Page</p>
 
             <button
