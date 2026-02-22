@@ -21,7 +21,8 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/message', (req, res) => {
-    res.json({ message: 'Hello from the backend!', mongodb });
+    const isDbConnected = mongoose.connection.readyState === 1;
+    res.json({ message: 'Hello from the backend!', databaseConnected: isDbConnected });
 });
 
 app.listen(port, () => {
