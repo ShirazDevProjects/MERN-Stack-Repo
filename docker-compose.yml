@@ -3,7 +3,7 @@ services:
   backend:
     build: ./server
     ports:
-      - "5000:5000"
+      - "4000:4000" # Updated to match the PORT in .env (4000)
     env_file:
       - ./server/.env
     networks:
