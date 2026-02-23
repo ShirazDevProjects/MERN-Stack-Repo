@@ -4,6 +4,8 @@ services:
     build: ./server
     ports:
       - "4000:4000"
+    env_file:
+      - ./server/.env.local
     networks:
       - mern-network
 
