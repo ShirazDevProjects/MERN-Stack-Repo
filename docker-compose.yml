@@ -4,9 +4,6 @@ services:
     build: ./server
     ports:
       - "4000:4000"
-    # Ports removed because Nginx will handle reverse proxying on port 4000
-    env_file:
-      - ./server/.env
     networks:
       - mern-network
 
