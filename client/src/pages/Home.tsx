@@ -3,6 +3,7 @@ import { useState } from 'react';
 const Home = () => {
     const [message, setMessage] = useState<string>('');
     const [dbStatus, setDbStatus] = useState<boolean | null>(null);
+    const [dbError, setDbError] = useState<string | null>(null);
 
     const fetchMessage = () => {
         // Fetch message from the backend API when the button is clicked
@@ -11,6 +12,7 @@ const Home = () => {
             .then((data) => {
                 setMessage(data.message);
                 setDbStatus(data.databaseConnected);
+                setDbError(data.error || null);
             })
             .catch((err) => console.error('Error fetching data:', err));
     };
@@ -55,6 +57,16 @@ const Home = () => {
                                 </>
                             )}
                         </div>
+
+                        {dbError && (
+                            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg w-full text-left">
+                                <p className="text-red-800 text-sm font-semibold mb-1 flex items-center gap-1">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                    Connection Error Details:
+                                </p>
+                                <p className="text-red-600 text-xs font-mono break-all font-medium bg-red-100 p-2 rounded">{dbError}</p>
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
