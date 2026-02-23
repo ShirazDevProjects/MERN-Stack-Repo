@@ -23,6 +23,9 @@ app.get('/', (req, res) => {
 app.get('/api/message', (req, res) => {
     const isDbConnected = mongoose.connection.readyState === 1;
     res.json({ message: 'Hello from the backend!', databaseConnected: isDbConnected });
+    const Dummy = mongoose.models.Dummy || mongoose.model('Dummy', new mongoose.Schema({ content: String }));
+    Dummy.create({ content: 'Sample dummy data' }).catch(err => console.error('Error inserting dummy data:', err));
+
 });
 
 app.listen(port, () => {
