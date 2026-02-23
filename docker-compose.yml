@@ -5,7 +5,7 @@ services:
     ports:
       - "4000:4000"
     env_file:
-      - ./server/.env.local
+      - .env
     networks:
       - mern-network
 
